@@ -1,34 +1,40 @@
-# Início - Empacota os dados inseridos.
-dia_inicio_1 = input().strip().split()[-1]
-data_inicio_1 = input().strip().split(':') 
 
-# Final.
-dia_final_1 = input().strip().split()[-1]
-data_final_1 = input().strip().split(':')
+dia_1 = int(input().split()[1])
+hora_inicial = input().split(':')
 
-# Tratar os indíces.
-inicio_1 = int(dia_inicio_1)
-hh_1 = int(data_inicio_1[0])
-mm_1 = int(data_inicio_1[1])
-ss_1 = int(data_inicio_1[2])
+hora_1 = int(hora_inicial[0])
+min_1 = int(hora_inicial[1])
+seg_1 = int(hora_inicial[2])
 
+dia_2 = int(input().split()[1])
+hora_final = input().split(':')
 
-final_1 = int(dia_final_1)
-hh_2 = int(data_final_1[0])
-mm_2 = int(data_final_1[1])
-ss_2 = int(data_final_1[2])
+hora_2 = int(hora_final[0])
+min_2 = int(hora_final[1])
+seg_2 = int(hora_final[2])
 
-"""
-1 dia == 24 horas
-1 hora == 60 min
-1 min == 60 seg
+total_dias = dia_2 - dia_1
 
-dia_5 - dia_9 = qtd_dia_4
-qtd_dia_4 = 96 horas
+horas_total = hora_2 - hora_1
 
-"""
+if horas_total < 0:
+    horas_total += 24
+    total_dias -= 1
 
+minutos_total = min_2 - min_1
 
+if minutos_total < 0:
+    minutos_total += 60
+    horas_total -= 1
 
+segundos_total = seg_2 - seg_1
 
+if segundos_total < 0:
+    segundos_total += 60
+    minutos_total -= 1
+
+print('{} dia (s)'.format(total_dias))
+print('{} hora (s)'.format(horas_total))
+print('{} minuto (s)'.format(minutos_total))
+print('{} segundo (s)'.format(segundos_total))
 
