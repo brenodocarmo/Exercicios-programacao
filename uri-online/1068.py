@@ -1,23 +1,23 @@
 
+while True:
 
-exp = input()
+    try:
+        exp = input()
+        pilha = 0
+        for caracter in exp:
+            if caracter == '(':
+                pilha += 1
 
-i = 0
-p = []
-
-while i < len(exp):
-    if exp[i] == '(':
-        p.append('(')
-
-    if exp[i] == ')':
-        if len(p) > 0:
-            topo = p.pop(-1)
+            elif caracter == ')':
+                pilha -= 1
+            
+            if pilha < 0:
+                break
+        
+        if pilha != 0:
+            print('incorrect')
         else:
-            p.append(')')
-            break
-    i+=1
+            print('correct')
 
-if len(p) == 0:
-    print('correct')
-else:
-    print('incorrect')
+    except EOFError:
+        break
